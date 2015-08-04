@@ -59,11 +59,6 @@ function uninstall_zeromq {
     fi
 }
 
-function start_zeromq {
-    echo_summary "Starting zeromq receiver"
-    run_process 0mq "$OSLO_BIN_DIR/oslo-messaging-zmq-receiver"
-}
-
 function iniset_zeromq_backend {
     local package=$1
     local file=$2
@@ -102,8 +97,7 @@ if is_service_enabled 0mq; then
         install_zeromq
 
     elif [[ "$1" == "stack" && "$2" == "post-config" ]]; then
-        # Start zeromq process, this happens before any services start
-        start_zeromq
+        :
 
     elif [[ "$1" == "stack" && "$2" == "extra" ]]; then
         :
