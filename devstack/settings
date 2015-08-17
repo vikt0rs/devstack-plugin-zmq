@@ -1,3 +1,11 @@
 enable_service 0mq
 disable_service rabbit
 ZEROMQ_MATCHMAKER=${ZEROMQ_MATCHMAKER:-"redis"}
+
+# NOTE(viktors): Variables for testing oslo.messaging feature/zmq branch
+# TODO(viktors): Remove this when feature/zmq branch will be merged
+#                into master
+LIBS_FROM_GIT=oslo.messaging
+OSLOMSG_BRANCH=feature/zmq
+REQUIREMENTS_DIR=/opt/stack/requirements
+USE_CONSTRAINTS=True
